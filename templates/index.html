@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Sorting</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        var audioPlayer;
+
+        function playAudio(file_path) {
+            audioPlayer.src = file_path;
+            audioPlayer.play();
+        }
+
+        function pauseAudio() {
+            audioPlayer.pause();
+        }
+
+        function nextTrack() {
+            // Implement logic to play the next track
+        }
+
+        function previousTrack() {
+            // Implement logic to play the previous track
+        }
+
+        function updateProgressBar() {
+            var progressBar = document.getElementById('progress-bar');
+            progressBar.value = audioPlayer.currentTime;
+        }
+
+        function initializeAudioPlayer() {
+            audioPlayer = document.getElementById('audio-player');
+            audioPlayer.addEventListener('timeupdate', updateProgressBar);
+        }
+
+        window.onload = initializeAudioPlayer;
+    </script>
+</head>
+<body>
+    <h1>Track Sorting</h1>
+
+    <form method="POST">
+        <label for="sorting_option">Sort Tracks:</label>
+        <select name="sorting_option" id="sorting_option">
+            <option value="genre">By Genre</option>
+            <option value="artist">By Artist</option>
+            <option value="album">By Album</option>
+            <option value="reverse">Reverse Sorting</option>
+        </select>
+        <button type="submit" class="btn-sort">Sort</button>
+    </form>
+
+    {% if tracks %}
+        <h2>Tracks</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Folder</th>
+                    <th>Tracks</th>
+                    <th>Destination</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for folder, folder_tracks, destination_path in tracks %}
+              <tr>
+                  <td>{{ folder }}</td>
+                  <td>
+                      <ul>
+                          {% for track in folder_tracks %}
+                              <li>
+                                  <a href="{{ url_for('play_file', file_path=track + '.mp3') }}">{{ track }}</a>
+                              </li>
+                          {% endfor %}
+                      </ul>
+                  </td>
+                  <td>{{ destination_path }}</td>
+              </tr>
+          {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="music-player">
+            <h2>Music Player</h2>
+            <audio id="audio-player" controls></audio>
+            <div class="player-controls">
+                <button onclick="previousTrack()">Previous</button>
+                <button onclick="playAudio('{{ current_track }}')">Play</button>
+                <button onclick="pauseAudio()">Pause</button>
+                <button onclick="nextTrack()">Next</button>
+            </div>
+            <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+    {% else %}
+        <p>No tracks found.</p>
+    {% endif %}
+</body>
+</html>

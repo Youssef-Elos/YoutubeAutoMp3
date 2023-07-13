@@ -1,0 +1,51 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    color: #1db954;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+button {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.btn-sort {
+    background-color: #1db954;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-search {
+    background-color: #fff;
+    color: #1db954;
+    border: 1px solid #1db954;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
