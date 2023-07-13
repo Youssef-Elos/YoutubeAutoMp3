@@ -11,8 +11,8 @@ tracks_folder = r"C:\Users\bilga\Desktop\test_code\YoutubeAutoMp3\downloads"
 destination_folder = r"C:\Users\bilga\Desktop\test_code\YoutubeAutoMp3\playlists"
 
 # Spotify API credentials
-client_id = "38ad11381339443a98fc7aec061db864"
-client_secret = "d367a3107db3469797a2a28f27917f33"
+client_id = ""
+client_secret = ""
 
     # Sorting options: 'genre', 'artist', 'album'
 sorting_option = "genre"

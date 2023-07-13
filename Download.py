@@ -38,7 +38,7 @@ def download_track():
         api_url = "https://youtube-mp36.p.rapidapi.com/dl"
         querystring = {"id": video_id}
         headers = {
-            "X-RapidAPI-Key": "25dfaf6affmshba9a1401cf4dd17p1e6df4jsn29da3dfde0d7",
+            "X-RapidAPI-Key": "",
             "X-RapidAPI-Host": "youtube-mp36.p.rapidapi.com"
         }
         response = requests.get(api_url, headers=headers, params=querystring)
